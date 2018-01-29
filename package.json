@@ -1,0 +1,21 @@
+{
+  "name": "Server",
+  "version": "1.0.0",
+  "description": "Express app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "expose": "ngrok http 3000" 
+  },
+  "dependencies": {
+    "express": "*",
+    "express-validator": "^3.1.2",
+    "request": "^2.81.0"
+  },
+  "author": "Rob van der Pas",
+  "license": "ISC",
+  "devDependencies": {
+    "ngrok": "^2.2.9"
+  }
+}
