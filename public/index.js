@@ -18,7 +18,7 @@ function createChart(error, data) {
 
     // if the value is negative replace with 0, so we don't get an error
     if (d[22] < 0) {
-      d[22] = 0;
+      return;
     }
 
     return {
@@ -31,8 +31,6 @@ function createChart(error, data) {
   }
 
   cleanedData.forEach(d => {
-    console.log(d)
-    console.log(d.date.toString())
     d.date = d.date.toString().substring(3); // remove day from string
     d.date = d.date.split('00:00:00'); // remove anyting starting at 00:00:00
     d.date = d.date.splice(0,1).toString().trim(); // remove second part of array and make it a string again
@@ -68,7 +66,8 @@ function createChart(error, data) {
       .attr("dy", ".35em")
       .attr("transform", "rotate(45)")
       .style("text-anchor", "start")
-      .style("font-size", "13px");
+      .style("font-size", "13px")
+      .style("fill", "#fff");
 
   // wrap y axis in g element
   g.append("g")
@@ -81,7 +80,7 @@ function createChart(error, data) {
     .attr("text-anchor", "end")
     .text("Regen per dag in 0.1 mm")
     .style("font-size", "15px")
-    .style("fill", "#000");
+    .style("fill", "#fff");
 
   // create bars
   g.selectAll(".bar")
@@ -98,7 +97,7 @@ function createChart(error, data) {
           .style("opacity", .9);
         tooltip.html(`
           <div class="tooltip__item"><strong>Datum:</strong> ${d.date}</div>
-          <div class="tooltip__item"><strong>Regen per dag:</strong> ${d.rainPerDay}</div>
+          <div class="tooltip__item"><strong>Regen per dag:</strong> ${d.rainPerDay / 10}mm</div>
         `)
         .style("left", `${d3.event.pageX}px`)
         .style("top", `${d3.event.pageY - 28}px`);
@@ -110,17 +109,17 @@ function createChart(error, data) {
       })
       .on("click", d => {
         sideInfo.html(`
-          <div class="sideinfo__item"><strong>test:</strong> ${d.date}</div>
+          <div class="sideinfo__item"><strong>Datum:</strong> ${d.date}</div>
           <div class="sideinfo__item"><strong>Regen per dag:</strong> ${d.rainPerDay / 10} mm</div>
-          <div class="sideinfo__item"><strong>Hoelang het regende:</strong> ${d.rainDuration}</div>
-          <div class="sideinfo__item"><strong>Minimale temperatuur:</strong> ${d.minTemp}</div>
-          <div class="sideinfo__item"><strong>Maximale temperatuur:</strong> ${d.maxTemp}</div>
+          <div class="sideinfo__item"><strong>Hoelang het regende:</strong> ${d.rainDuration / 10} uur</div>
+          <div class="sideinfo__item"><strong>Minimale temperatuur:</strong> ${d.minTemp / 10} graden</div>
+          <div class="sideinfo__item"><strong>Maximale temperatuur:</strong> ${d.maxTemp / 10} graden</div>
         `)
       });
 
   d3.select('input[type="checkbox"').on('change', onchange);
 
-  const sideInfo = d3.select("body").append("div")
+  const sideInfo = d3.select("body").append("div").attr("class", "sideinfo")
 
   function onchange() {
     const sort = this.checked ? sortOnFrequency : sortOnLetter;

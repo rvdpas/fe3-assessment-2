@@ -13,12 +13,18 @@ main {
     text-align: center;
 }
 
+h1 {
+  color: #fff;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .bar {
-    fill: steelblue;
+    fill: #74abd9;
 }
 
 .bar:hover {
-    fill: brown;
+    fill: #244bd1;
 }
 
 .tooltip {
@@ -42,8 +48,25 @@ main {
 .sort {
     background: #333;
     color: #fff;
-    max-width: 150px;
+    max-width: 250px;
     padding: 24px 8px;
+}
+
+.sideinfo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #333;
+  color: #fff;
+  max-width: 250px;
+}
+
+.sideinfo__item {
+  padding: 8px 16px;
+}
+
+.sideinfo__item:first-child {
+  margin-top: 16px;
 }
 
 .sort label {
@@ -52,4 +75,8 @@ main {
 
 .sort input {
     margin-top: 5px;
+}
+
+.tick text {
+  fill: #fff;
 }
