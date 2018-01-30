@@ -109,10 +109,18 @@ function createChart(error, data) {
           .style("opacity", 0)
       })
       .on("click", d => {
-        console.log(d)
+        sideInfo.html(`
+          <div class="sideinfo__item"><strong>test:</strong> ${d.date}</div>
+          <div class="sideinfo__item"><strong>Regen per dag:</strong> ${d.rainPerDay / 10} mm</div>
+          <div class="sideinfo__item"><strong>Hoelang het regende:</strong> ${d.rainDuration}</div>
+          <div class="sideinfo__item"><strong>Minimale temperatuur:</strong> ${d.minTemp}</div>
+          <div class="sideinfo__item"><strong>Maximale temperatuur:</strong> ${d.maxTemp}</div>
+        `)
       });
 
   d3.select('input[type="checkbox"').on('change', onchange);
+
+  const sideInfo = d3.select("body").append("div")
 
   function onchange() {
     const sort = this.checked ? sortOnFrequency : sortOnLetter;
