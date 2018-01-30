@@ -1,0 +1,32 @@
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.filters {
+    position: absolute;
+    top: 50%;
+    right: 200px;
+    transform: translateY(-50%);
+}
+
+.tooltip {
+    position: absolute;
+    text-align: left;
+    width: 200px;
+    padding: 8px;
+    font-size: 13px;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.tooltip .tooltip__item {
+    display: block;
+    max-width: 180px;
+    margin: 0 auto;
+}

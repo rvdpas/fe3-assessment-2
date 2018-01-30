@@ -3,17 +3,17 @@
 function createChart(error, data) {
   if (error) throw error;
 
-  var header = data.indexOf('STN,YYYYMMDD');
-  var endHeader = data.indexOf('\n', header);
-  var parseDate= d3.timeParse("%Y%m%d");
-
+  const header = data.indexOf('STN,YYYYMMDD');
+  const endHeader = data.indexOf('\n', header);
+  const parseDate= d3.timeParse("%Y%m%d");
 
   data = data.slice(endHeader);
   data = data.replace('#', '').trim();
   data = data.replace(/ +/g, '');
 
-  var cleanedData = d3.csvParseRows(data, map)
+  const cleanedData = d3.csvParseRows(data, map)
 
+  // parse to new object so we can work with it
   function map(d) {
     return {
       date: parseDate(d[1]),
@@ -22,26 +22,28 @@ function createChart(error, data) {
     }
   }
 
-  cleanedData.forEach(function(d) {
-    d.date = d.date.toString().substring(3);
-    d.date = d.date.split('00:00:00');
-    d.date = d.date.splice(0,1).toString().trim();
+  cleanedData.forEach(d => {
+    d.date = d.date.toString().substring(3); // remove day from string
+    d.date = d.date.split('00:00:00'); // remove anyting starting at 00:00:00
+    d.date = d.date.splice(0,1).toString().trim(); // remove second part of array and make it a string again
     d.rainPerDay = +d.rainPerDay;
   });
 
-  console.log(cleanedData)
-
+  // create default variables
   const svg = d3.select("svg");
   const margin = {top: 100, right: 50, bottom: 120, left: 80};
   const width = +svg.attr("width") - margin.left - margin.right;
   const height = +svg.attr("height") - margin.top - margin.bottom;
 
+  // create axis
   const xScale = d3.scaleBand().rangeRound([0, width]).padding(0.1);
   const yScale = d3.scaleLinear().rangeRound([height, 0]);
 
+ // create a wrapper
   const g = svg.append("g")
     .attr("transform", `translate( ${margin.left},${margin.top} )`);
 
+  //  create the domains so the axis know how big they should be
   xScale.domain(cleanedData.map(d => d.date ));
   yScale.domain([0, d3.max(cleanedData, d => d.rainPerDay )]);
 
@@ -58,7 +60,7 @@ function createChart(error, data) {
       .style("text-anchor", "start")
       .style("font-size", "13px");
 
-    // create y axis
+  // wrap y axis in g element
   g.append("g")
     .attr("class", "axis axis--y")
     .call(d3.axisLeft(yScale))
@@ -79,32 +81,30 @@ function createChart(error, data) {
       .attr("x", d => xScale(d.date))
       .attr("y", d => yScale(d.rainPerDay))
       .attr("width", xScale.bandwidth())
-      .attr("height", function(d) { return height - yScale(d.rainPerDay)})
-      .on("mouseover", function(d) {
+      .attr("height", d => height - yScale(d.rainPerDay))
+      .on("mouseover", d => {
         tooltip.transition()
           .duration(200)
           .style("opacity", .9);
         tooltip.html(`
-          <div class="tooltip__item"><strong>date:</strong> ${d.date}</div>
-          <div class="tooltip__item"><strong>rainPerDay:</strong> ${d.rainPerDay}</div>
+          <div class="tooltip__item"><strong>Datum:</strong> ${d.date}</div>
+          <div class="tooltip__item"><strong>Regen per dag:</strong> ${d.rainPerDay}</div>
         `)
-        .style("left", (d3.event.pageX) + "px")
-        .style("top", (d3.event.pageY - 28) + "px");
+        .style("left", `${d3.event.pageX}px`)
+        .style("top", `${d3.event.pageY - 28}px`);
       })
-      .on("mouseout", function(d) {
+      .on("mouseout", d => {
         tooltip.transition()
           .duration(500)
           .style("opacity", 0)
       });
 
-  d3.select('input').on('change', onchange);
+  d3.select('input[type="checkbox"').on('change', onchange);
 
   function onchange() {
-    var sort = this.checked ? sortOnFrequency : sortOnLetter;
-    var x0 = xScale.domain(cleanedData.sort(sort).map(function(d) { return d.date; })).copy();
-    var transition = svg.transition();
-
-    console.log(x0)
+    const sort = this.checked ? sortOnFrequency : sortOnLetter;
+    const x0 = xScale.domain(cleanedData.sort(sort).map(d => d.date )).copy();
+    const transition = svg.transition();
 
     /* Initial sort */
     svg.selectAll('.bar').sort(sortBar);
@@ -142,7 +142,6 @@ function createChart(error, data) {
 
     /* Calculate `x` for a bar. */
     function barX(d) {
-      console.log(d)
       return xScale(d.date);
     }
 
@@ -156,9 +155,11 @@ function createChart(error, data) {
     return d3.ascending(a.date, b.date);
   }
 
+  // create tooltip
   const tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 };
 
+// load data and create chart
 d3.text('knmi.txt', createChart);
