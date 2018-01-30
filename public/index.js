@@ -32,7 +32,7 @@ function createChart(error, data) {
   console.log(cleanedData)
 
   const svg = d3.select("svg");
-  const margin = {top: 100, right: 20, bottom: 100, left: 80};
+  const margin = {top: 100, right: 50, bottom: 120, left: 80};
   const width = +svg.attr("width") - margin.left - margin.right;
   const height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -64,11 +64,12 @@ function createChart(error, data) {
     .call(d3.axisLeft(yScale))
   .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 6)
+    .attr("y", -50)
     .attr("dy", "0.71em")
     .attr("text-anchor", "end")
-    .text("rainPerDay")
-    .style("font-size", "13px");
+    .text("Regen per dag in 0.1 mm")
+    .style("font-size", "13px")
+    .style("fill", "black");
 
   // create bars
   g.selectAll(".bar")
@@ -96,12 +97,14 @@ function createChart(error, data) {
           .style("opacity", 0)
       });
 
-d3.select('input').on('change', onchange);
+  d3.select('input').on('change', onchange);
 
   function onchange() {
     var sort = this.checked ? sortOnFrequency : sortOnLetter;
-    var x0 = xScale.domain(cleanedData.sort(sort).map(function(d) { return d.date;})).copy();
+    var x0 = xScale.domain(cleanedData.sort(sort).map(function(d) { return d.date; })).copy();
     var transition = svg.transition();
+
+    console.log(x0)
 
     /* Initial sort */
     svg.selectAll('.bar').sort(sortBar);
@@ -112,7 +115,7 @@ d3.select('input').on('change', onchange);
       .attr('x', barX0);
 
     /* Move the labels. */
-    transition.select('.axis-x')
+    transition.select('.axis--x')
       .call(d3.axisBottom(xScale))
       .selectAll('g')
       .delay(delay);
@@ -130,7 +133,6 @@ d3.select('input').on('change', onchange);
     }
   }
 
-
   function change() {
     d3
       .select('input')
@@ -140,10 +142,9 @@ d3.select('input').on('change', onchange);
 
     /* Calculate `x` for a bar. */
     function barX(d) {
-      return x(d.date);
+      console.log(d)
+      return xScale(d.date);
     }
-
-    console.log(cleanedData)
 
   /* Sort on frequence. */
   function sortOnFrequency(a, b) {
@@ -154,7 +155,6 @@ d3.select('input').on('change', onchange);
   function sortOnLetter(a, b) {
     return d3.ascending(a.date, b.date);
   }
-
 
   const tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
