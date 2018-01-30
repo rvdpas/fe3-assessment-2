@@ -1,16 +1,24 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url(/rain.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    text-align: center;
+}
+
 .bar {
-  fill: steelblue;
+    fill: steelblue;
 }
 
 .bar:hover {
-  fill: brown;
-}
-
-.filters {
-    position: absolute;
-    top: 50%;
-    right: 200px;
-    transform: translateY(-50%);
+    fill: brown;
 }
 
 .tooltip {
@@ -29,4 +37,19 @@
     display: block;
     max-width: 180px;
     margin: 0 auto;
+}
+
+.sort {
+    background: #333;
+    color: #fff;
+    max-width: 150px;
+    padding: 24px 8px;
+}
+
+.sort label {
+    text-align: center;
+}
+
+.sort input {
+    margin-top: 5px;
 }

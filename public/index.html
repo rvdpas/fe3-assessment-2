@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>@rvdpas</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -10,14 +12,11 @@
     <main>
         <h1>Hoeveelheid regen gevallen in de bilt in de maand januari van 2018</h1>
 
-        <div class="filters">
-            <label class="filter"><input type="radio" name="filter" checked>Neerslag</label>
-            <label class="filter"><input type="radio" name="filter">Zonuren</label>
+        <div class="sort">
+            <label><input type="checkbox">Sort values</label>
         </div>
 
-        <label><input type=checkbox> Sort values</label>
         <svg width="960" height="500"></svg>
-        <div id="pieChart"></div>
     </main>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>

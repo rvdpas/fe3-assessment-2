@@ -15,14 +15,24 @@ function createChart(error, data) {
 
   // parse to new object so we can work with it
   function map(d) {
+
+    // if the value is negative replace with 0, so we don't get an error
+    if (d[22] < 0) {
+      d[22] = 0;
+    }
+
     return {
       date: parseDate(d[1]),
-      sunHours: parseInt(d[18]),
-      rainPerDay: parseInt(d[20]),
+      minTemp: parseInt(d[12]),
+      maxTemp: parseInt(d[14]),
+      rainDuration: parseInt(d[21]),
+      rainPerDay: parseInt(d[22]),
     }
   }
 
   cleanedData.forEach(d => {
+    console.log(d)
+    console.log(d.date.toString())
     d.date = d.date.toString().substring(3); // remove day from string
     d.date = d.date.split('00:00:00'); // remove anyting starting at 00:00:00
     d.date = d.date.splice(0,1).toString().trim(); // remove second part of array and make it a string again
@@ -31,7 +41,7 @@ function createChart(error, data) {
 
   // create default variables
   const svg = d3.select("svg");
-  const margin = {top: 100, right: 50, bottom: 120, left: 80};
+  const margin = {top: 50, right: 50, bottom: 120, left: 80};
   const width = +svg.attr("width") - margin.left - margin.right;
   const height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -70,8 +80,8 @@ function createChart(error, data) {
     .attr("dy", "0.71em")
     .attr("text-anchor", "end")
     .text("Regen per dag in 0.1 mm")
-    .style("font-size", "13px")
-    .style("fill", "black");
+    .style("font-size", "15px")
+    .style("fill", "#000");
 
   // create bars
   g.selectAll(".bar")
@@ -97,6 +107,9 @@ function createChart(error, data) {
         tooltip.transition()
           .duration(500)
           .style("opacity", 0)
+      })
+      .on("click", d => {
+        console.log(d)
       });
 
   d3.select('input[type="checkbox"').on('change', onchange);
