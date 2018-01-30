@@ -3,6 +3,12 @@
 function createChart(error, data) {
   if (error) throw error;
 
+  data.forEach(function(d) {
+    d.speakers = +d.speakers;
+  })
+
+  console.log(data)
+
   const svg = d3.select("svg");
   const margin = {top: 100, right: 20, bottom: 100, left: 80};
   const width = +svg.attr("width") - margin.left - margin.right;
@@ -50,7 +56,7 @@ function createChart(error, data) {
       .attr("x", d => xScale(d.language))
       .attr("y", d => yScale(d.speakers))
       .attr("width", xScale.bandwidth())
-      .attr("height", d => height - yScale(d.speakers))
+      .attr("height", function(d) { return height - yScale(d.speakers)})
       .on("mouseover", function(d) {
         tooltip.transition()
           .duration(200)

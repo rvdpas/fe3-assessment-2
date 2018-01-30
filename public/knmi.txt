@@ -1,0 +1,79 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van dagwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/gehomogeniseerde-reeks-maandtemperaturen-de-bilt> of de Centraal Nederland Temperatuur <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/centraal-nederland-temperatuur-cnt>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 260:         5.180       52.100       1.90  DE BILT
+# 
+# YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
+# DDVEC    = Vectorgemiddelde windrichting in graden (360=noord, 90=oost, 180=zuid, 270=west, 0=windstil/variabel). Zie http://www.knmi.nl/kennis-en-datacentrum/achtergrond/klimatologische-brochures-en-boeken; 
+# FHVEC    = Vectorgemiddelde windsnelheid (in 0.1 m/s). Zie http://www.knmi.nl/kennis-en-datacentrum/achtergrond/klimatologische-brochures-en-boeken; 
+# FG       = Etmaalgemiddelde windsnelheid (in 0.1 m/s); 
+# FHX      = Hoogste uurgemiddelde windsnelheid (in 0.1 m/s); 
+# FHXH     = Uurvak waarin FHX is gemeten; 
+# FHN      = Laagste uurgemiddelde windsnelheid (in 0.1 m/s); 
+# FHNH     = Uurvak waarin FHN is gemeten; 
+# FXX      = Hoogste windstoot (in 0.1 m/s); 
+# FXXH     = Uurvak waarin FXX is gemeten; 
+# TG       = Etmaalgemiddelde temperatuur (in 0.1 graden Celsius); 
+# TN       = Minimum temperatuur (in 0.1 graden Celsius); 
+# TNH      = Uurvak waarin TN is gemeten; 
+# TX       = Maximum temperatuur (in 0.1 graden Celsius); 
+# TXH      = Uurvak waarin TX is gemeten; 
+# T10N     = Minimum temperatuur op 10 cm hoogte (in 0.1 graden Celsius); 
+# T10NH    = 6-uurs tijdvak waarin T10N is gemeten; 6=0-6 UT, 12=6-12 UT, 18=12-18 UT, 24=18-24 UT
+# SQ       = Zonneschijnduur (in 0.1 uur) berekend uit de globale straling (-1 voor <0.05 uur); 
+# SP       = Percentage van de langst mogelijke zonneschijnduur; 
+# Q        = Globale straling (in J/cm2); 
+# DR       = Duur van de neerslag (in 0.1 uur); 
+# RH       = Etmaalsom van de neerslag (in 0.1 mm) (-1 voor <0.05 mm); 
+# RHX      = Hoogste uursom van de neerslag (in 0.1 mm) (-1 voor <0.05 mm); 
+# RHXH     = Uurvak waarin RHX is gemeten; 
+# PG       = Etmaalgemiddelde luchtdruk herleid tot zeeniveau (in 0.1 hPa) berekend uit 24 uurwaarden; 
+# PX       = Hoogste uurwaarde van de luchtdruk herleid tot zeeniveau (in 0.1 hPa); 
+# PXH      = Uurvak waarin PX is gemeten; 
+# PN       = Laagste uurwaarde van de luchtdruk herleid tot zeeniveau (in 0.1 hPa); 
+# PNH      = Uurvak waarin PN is gemeten; 
+# VVN      = Minimum opgetreden zicht; 0: <100 m, 1:100-200 m, 2:200-300 m,..., 49:4900-5000 m, 50:5-6 km, 56:6-7 km, 57:7-8 km,..., 79:29-30 km, 80:30-35 km, 81:35-40 km,..., 89: >70 km)
+# VVNH     = Uurvak waarin VVN is gemeten; 
+# VVX      = Maximum opgetreden zicht; 0: <100 m, 1:100-200 m, 2:200-300 m,..., 49:4900-5000 m, 50:5-6 km, 56:6-7 km, 57:7-8 km,..., 79:29-30 km, 80:30-35 km, 81:35-40 km,..., 89: >70 km)
+# VVXH     = Uurvak waarin VVX is gemeten; 
+# NG       = Etmaalgemiddelde bewolking (bedekkingsgraad van de bovenlucht in achtsten, 9=bovenlucht onzichtbaar); 
+# UG       = Etmaalgemiddelde relatieve vochtigheid (in procenten); 
+# UX       = Maximale relatieve vochtigheid (in procenten); 
+# UXH      = Uurvak waarin UX is gemeten; 
+# UN       = Minimale relatieve vochtigheid (in procenten); 
+# UNH      = Uurvak waarin UN is gemeten; 
+# EV24     = Referentiegewasverdamping (Makkink) (in 0.1 mm); 
+# 
+# STN,YYYYMMDD,DDVEC,FHVEC,   FG,  FHX, FHXH,  FHN, FHNH,  FXX, FXXH,   TG,   TN,  TNH,   TX,  TXH, T10N,T10NH,   SQ,   SP,    Q,   DR,   RH,  RHX, RHXH,   PG,   PX,  PXH,   PN,  PNH,  VVN, VVNH,  VVX, VVXH,   NG,   UG,   UX,  UXH,   UN,  UNH, EV24
+# 
+  260,20180101,  225,   45,   50,   90,    2,   10,   18,  190,    2,   68,   52,   24,   88,    1,   46,   24,   21,   27,  224,   69,   47,   15,    2, 9985,10021,   24, 9951,    1,   50,    2,   75,    3,    7,   84,   96,   17,   73,    1,    3
+  260,20180102,  216,   39,   45,   80,   24,   20,    1,  140,   24,   65,   45,    2,   91,   24,   32,    6,   14,   18,  174,   62,   45,   20,   24,10054,10111,   11, 9934,   24,   47,   19,   75,    8,    7,   88,   96,    3,   80,    8,    2
+  260,20180103,  257,   82,   88,  120,   11,   70,    4,  290,    3,   88,   54,    7,  112,    3,   52,   12,    2,    3,   76,   51,   95,   52,    3, 9906, 9974,   24, 9837,    3,   56,    1,   75,    4,    8,   73,   95,    1,   65,    9,    1
+  260,20180104,  238,   51,   56,   90,   20,   30,   14,  180,   20,   82,   68,   14,  107,   17,   62,    6,    2,    3,  109,   16,    6,    4,   14, 9933, 9975,    2, 9883,   17,   35,   14,   80,   21,    8,   82,   97,   14,   67,   21,    2
+  260,20180105,  225,   38,   40,   60,    1,   20,   17,  150,   16,   64,   44,   18,   87,   15,   18,   18,    0,    0,  116,   24,   27,   12,    5, 9958,10006,   24, 9932,    4,   61,   15,   75,    1,    6,   87,   96,   17,   71,    3,    2
+  260,20180106,   34,    8,   28,   40,    1,   10,    8,   80,    1,   45,   22,   24,   66,   13,   12,   24,    7,    9,  189,    0,    0,    0,    1,10096,10198,   24,10014,    1,   56,    7,   70,    1,    8,   89,   97,    7,   83,   20,    2
+  260,20180107,   53,   58,   59,   70,    7,   50,    1,  120,   21,   10,  -12,   24,   31,   13,  -19,   24,   62,   78,  411,    0,    0,    0,    1,10266,10288,   22,10207,    1,   70,    1,   80,   12,    2,   77,   86,    1,   66,   12,    5
+  260,20180108,   79,   55,   55,   70,   10,   40,   20,  110,    9,   11,  -14,    2,   39,   14,  -20,    6,   65,   81,  388,    0,    0,    0,    1,10236,10279,    1,10175,   24,   68,   24,   80,   14,    4,   77,   84,   24,   69,   14,    4
+  260,20180109,  117,   26,   33,   60,    3,   20,   10,  100,    3,   30,   -2,    5,   61,   23,   -8,    6,    3,    4,  190,    0,    0,    0,    1,10106,10165,    1,10082,   16,   59,   10,   70,    3,    8,   89,   92,   10,   86,    3,    2
+  260,20180110,  161,   27,   28,   40,   13,   20,    2,   60,    5,   69,   58,    1,   76,   15,   56,    6,    0,    0,   69,   58,   26,    9,   12,10081,10105,   24,10069,   13,   50,   10,   66,    5,    8,   94,   97,   19,   90,    5,    1
+  260,20180111,   14,   12,   16,   30,   17,    0,    5,   50,   17,   57,   28,    5,   76,   13,   14,    6,    0,    0,  135,    0,    0,    0,    1,10179,10243,   24,10108,    1,    1,    4,   50,   13,    8,   97,  100,    3,   93,   13,    2
+  260,20180112,   34,    9,   15,   20,    1,    0,   16,   40,    1,   50,   41,   24,   59,   13,   39,   24,    0,    0,  103,    0,    0,    0,    1,10264,10272,   10,10245,    1,    4,    9,   69,   14,    8,   94,  100,   10,   85,   14,    1
+  260,20180113,  111,   30,   31,   50,   16,   20,    1,   90,   16,   42,   12,   21,   62,   14,  -17,   24,    0,    0,   90,    0,    0,    0,    1,10245,10267,    1,10224,   24,    8,    7,   68,   16,    7,   90,   99,    6,   75,   16,    1
+  260,20180114,  113,   36,   43,   50,    5,   30,   22,   90,    5,   29,    8,   23,   52,   14,   -1,   24,   50,   61,  369,    0,    0,    0,    1,10199,10221,    1,10162,   24,   58,   23,   69,   14,    4,   82,   90,   23,   73,   14,    4
+  260,20180115,  199,   58,   65,   90,   13,   30,    1,  180,   17,   52,   17,    1,   80,   21,   13,    6,    0,    0,   57,   95,  133,   26,   17,10009,10151,    1, 9894,   19,   50,    8,   70,   22,    8,   89,   94,   19,   82,   24,    1
+  260,20180116,  255,   47,   49,   70,   12,   30,   22,  190,    8,   52,   25,   23,   78,   15,   22,   24,   29,   35,  336,   39,   83,   25,    8, 9915, 9932,   17, 9894,    6,   50,   23,   80,   14,    7,   78,   91,   23,   64,   12,    4
+  260,20180117,  269,   51,   53,   80,   13,   40,    1,  160,   13,   46,   20,    9,   60,   19,   17,   12,    5,    6,  205,   22,   27,    7,   14, 9996,10052,   18, 9912,    1,   60,    1,   77,   18,    7,   73,   84,    1,   65,   15,    3
+  260,20180118,  250,   51,   64,  140,    9,   20,   19,  340,    9,   47,    5,   20,  102,    8,  -14,   24,    4,    5,  167,   65,  111,   20,    5, 9963,10024,   24, 9843,    8,   42,    5,   75,   17,    7,   85,   96,    5,   64,    8,    2
+  260,20180119,  242,   30,   31,   50,   13,   20,    1,  110,   14,   37,   14,   22,   69,   13,    1,   24,   25,   30,  326,   31,   54,   12,   21,10066,10079,   18,10028,    1,   64,   23,   80,   14,    6,   85,   96,    5,   67,   14,    4
+  260,20180120,  203,   22,   27,   40,    1,    0,   18,   70,    1,   22,    8,    7,   36,   14,    1,   12,    4,    5,  121,   20,   11,    6,   23,10035,10074,    1, 9994,   15,   42,   23,   70,    1,    7,   93,   98,   20,   89,    2,    1
+  260,20180121,  201,   16,   26,   50,   22,   10,    9,   90,   22,   30,   -4,    2,   69,   14,  -31,    6,   48,   56,  431,   27,   21,    9,   24,10125,10158,   12,10071,    1,   47,   24,   80,   13,    6,   85,   98,    1,   68,   13,    5
+  260,20180122,  258,   25,   35,   50,    1,   30,    4,   90,    2,   63,   20,    1,   84,   12,   20,    6,    5,    6,  237,   19,    6,    1,    1,10096,10184,   24,10042,    5,   24,    4,   70,    9,    8,   88,   98,    3,   81,   14,    3
+  260,20180123,  210,   48,   50,   70,   19,   20,    5,  130,   19,   81,   46,    5,  112,   24,   26,    6,    9,   10,  221,   40,   15,    4,   23,10179,10200,    8,10155,   21,   40,   18,   75,   12,    8,   88,   96,   18,   78,   12,    3
+  260,20180124,  215,   65,   70,  100,   14,   30,   22,  180,   16,  117,   73,   22,  144,   13,   72,   24,    0,    0,  147,   41,   42,   15,   21,10107,10160,    1,10065,   19,   58,   20,   80,   18,    8,   84,   95,   21,   69,   18,    2
+  260,20180125,  208,   38,   38,   50,    1,   20,   18,  100,    1,   77,   50,   24,   92,   12,   38,   24,    6,    7,  221,    1,    1,    1,   19,10110,10125,   24,10097,    1,   58,   24,   70,    1,    8,   88,   96,   24,   82,   14,    3
+  260,20180126,  201,   13,   18,   30,   16,   10,   11,   50,   16,   54,   25,    4,   86,   14,   -3,    6,   12,   14,  297,    0,    0,    0,    1,10191,10269,   24,10126,    1,    1,    4,   62,   13,    7,   95,  100,    4,   83,   13,    4
+  260,20180127,  211,   49,   50,   80,   19,   10,    1,  140,   21,   58,   44,    3,   72,   13,   30,    6,   20,   23,  287,   36,   11,    5,   22,10275,10301,   10,10248,   23,   27,   22,   75,    8,    8,   83,   95,   22,   72,   12,    4
+  260,20180128,  241,   53,   54,   70,    1,   40,    5,  130,    1,   97,   69,    1,  108,   24,   68,    6,   17,   19,  278,    0,   -1,   -1,    1,10280,10293,   11,10249,    1,   48,    3,   70,   14,    8,   90,   98,    3,   84,   12,    4
+  260,20180129,  250,   53,   58,   80,   11,   20,   23,  150,   12,   88,   46,   24,  107,   14,   35,   24,    0,    0,  166,   28,   52,   28,   16,10250,10290,   24,10207,   14,   42,   16,   75,    6,    6,   84,   93,   16,   75,   12,    2
