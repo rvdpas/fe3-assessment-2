@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background: url(/rain.jpg) no-repeat 50% 50%;
+  background: url(rain.jpg) no-repeat 50% 50%;
   background-size: cover;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
