@@ -1,16 +1,16 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    background: url(/rain.jpg) no-repeat 50% 50%;
-    background-size: cover;
-    height: 100%;
-    font-family: 'Montserrat', sans-serif;
+  background: url(/rain.jpg) no-repeat 50% 50%;
+  background-size: cover;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 main {
-    text-align: center;
+  text-align: center;
 }
 
 h1 {
@@ -20,36 +20,36 @@ h1 {
 }
 
 .bar {
-    fill: #74abd9;
+  fill: #74abd9;
 }
 
 .bar:hover {
-    fill: #244bd1;
+  fill: #244bd1;
 }
 
 .tooltip {
-    position: absolute;
-    text-align: left;
-    width: 200px;
-    padding: 8px;
-    font-size: 13px;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 4px;
-    pointer-events: none;
+  position: absolute;
+  text-align: left;
+  width: 200px;
+  padding: 8px;
+  font-size: 13px;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .tooltip .tooltip__item {
-    display: block;
-    max-width: 180px;
-    margin: 0 auto;
+  display: block;
+  max-width: 180px;
+  margin: 0 auto;
 }
 
 .sort {
-    background: #333;
-    color: #fff;
-    max-width: 250px;
-    padding: 24px 8px;
+  background: #333;
+  color: #fff;
+  max-width: 250px;
+  padding: 24px 8px;
 }
 
 .sideinfo {
@@ -74,7 +74,7 @@ h1 {
 }
 
 .sort input {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .tick text {

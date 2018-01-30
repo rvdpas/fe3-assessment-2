@@ -1,5 +1,6 @@
 // basic chart https://bl.ocks.org/mbostock/3885304
 // Tooltip: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+// Sorting: https://github.com/cmda-fe3/course-17-18/tree/master/site/class-4/sort
 function createChart(error, data) {
   if (error) throw error;
 
@@ -10,6 +11,7 @@ function createChart(error, data) {
   data = data.slice(endHeader);
   data = data.replace('#', '').trim();
   data = data.replace(/ +/g, '');
+
 
   const cleanedData = d3.csvParseRows(data, map)
 
@@ -160,10 +162,10 @@ function createChart(error, data) {
       .dispatch('change');
   }
 
-    /* Calculate `x` for a bar. */
-    function barX(d) {
-      return xScale(d.date);
-    }
+  /* Calculate `x` for a bar. */
+  function barX(d) {
+    return xScale(d.date);
+  }
 
   /* Sort on frequence. */
   function sortOnFrequency(a, b) {
