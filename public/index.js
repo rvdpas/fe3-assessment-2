@@ -1,6 +1,9 @@
-// basic chart https://bl.ocks.org/mbostock/3885304
-// Tooltip: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369
-// Sorting: https://github.com/cmda-fe3/course-17-18/tree/master/site/class-4/sort
+/*
+Links that i've used to build this project:
+basic chart https://bl.ocks.org/mbostock/3885304
+Tooltip: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+Sorting: https://github.com/cmda-fe3/course-17-18/tree/master/site/class-4/sort
+*/
 function createChart(error, data) {
   if (error) throw error;
 
@@ -25,7 +28,7 @@ function createChart(error, data) {
 
     return {
       date: parseDate(d[1]),
-      minTemp: parseInt(d[12]),
+      minTemp: parseInt(d[12]), // parseInt so we are sure we are working with integers
       maxTemp: parseInt(d[14]),
       rainDuration: parseInt(d[21]),
       rainPerDay: parseInt(d[22]),
@@ -39,7 +42,7 @@ function createChart(error, data) {
     d.rainPerDay = +d.rainPerDay;
   });
 
-  // create default variables
+  // create default variables and use the margin convention: https://bl.ocks.org/mbostock/3019563
   const svg = d3.select("svg");
   const margin = {top: 50, right: 50, bottom: 120, left: 80};
   const width = +svg.attr("width") - margin.left - margin.right;
@@ -53,7 +56,11 @@ function createChart(error, data) {
   const g = svg.append("g")
     .attr("transform", `translate( ${margin.left},${margin.top} )`);
 
-  //  create the domains so the axis know how big they should be
+  /*
+  create the domains so the axis know how big they should be.
+  xScale is going to show the dates from 1 to 30 januari of 2018
+  yScale is going to show the amount of rain that fell that day in de Bilt, the Netherlands
+  */
   xScale.domain(cleanedData.map(d => d.date ));
   yScale.domain([0, d3.max(cleanedData, d => d.rainPerDay )]);
 
@@ -69,7 +76,7 @@ function createChart(error, data) {
       .attr("transform", "rotate(45)")
       .style("text-anchor", "start")
       .style("font-size", "13px")
-      .style("fill", "#fff");
+      .style("fill", "#fff"); // fill the label or else it's default black and you wouldn't see it.
 
   // wrap y axis in g element
   g.append("g")
@@ -116,13 +123,16 @@ function createChart(error, data) {
           <div class="sideinfo__item"><strong>Hoelang het regende:</strong> ${d.rainDuration / 10} uur</div>
           <div class="sideinfo__item"><strong>Minimale temperatuur:</strong> ${d.minTemp / 10} graden</div>
           <div class="sideinfo__item"><strong>Maximale temperatuur:</strong> ${d.maxTemp / 10} graden</div>
-        `)
+        `) // I've devided them by 10 because the data is in 0.1 (example: 0.1 degrees Celsius), this way I can show numbers that mean something.
       });
 
+  // add an event listener to the checkbox that waits for a check on the input
   d3.select('input[type="checkbox"').on('change', onchange);
 
-  const sideInfo = d3.select("body").append("div").attr("class", "sideinfo")
+  const sideInfo = d3.select("body").append("div")
+    .attr("class", "sideinfo")
 
+  // check which sorting patter is used
   function onchange() {
     const sort = this.checked ? sortOnFrequency : sortOnLetter;
     const x0 = xScale.domain(cleanedData.sort(sort).map(d => d.date )).copy();

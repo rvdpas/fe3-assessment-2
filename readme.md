@@ -22,13 +22,13 @@ The first step I took was to clean the data. The dirty data looks like this:
 I couldn't really work with this data so, i started to clean it. I started with a header to show where I wanted to start to use the data. Then I showed where the data should stop and remove all the hashes in the data by replacing it with an empty string. To remove all the spaces I used the build in trim function.
 
 ```
-    const header = data.indexOf('STN,YYYYMMDD');
-    const endHeader = data.indexOf('\n', header);
-    const parseDate= d3.timeParse("%Y%m%d");
+const header = data.indexOf('STN,YYYYMMDD');
+const endHeader = data.indexOf('\n', header);
+const parseDate= d3.timeParse("%Y%m%d");
 
-    data = data.slice(endHeader);
-    data = data.replace('#', '').trim();
-    data = data.replace(/ +/g, '');
+data = data.slice(endHeader);
+data = data.replace('#', '').trim();
+data = data.replace(/ +/g, '');
 ```
 
 After the step above the data looked like this: 
@@ -151,8 +151,19 @@ I came up with a block that presented more data ones the bar is clicked using th
 ### Styling the chart
 My last step was to style the chart. I have used soft blue colors to indicate the amount of rain that has fallen. 
 
+### Todo / extend
+- [ ] Option to close the popup after you've clicked a bar
+- [ ] Option to select other data and update the graph
+- [ ] Create different kind of charts with the same data
+
+
 ### Useful links
 - [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+- [Axis](https://github.com/d3/d3/blob/master/API.md#axes-d3-axis)
+- [Time format](https://github.com/d3/d3/blob/master/API.md#time-formats-d3-time-format)
+- [KNMI](http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi)
+- [Bar chart](https://bl.ocks.org/mbostock/3885304)
+- [Sort chart](https://github.com/cmda-fe3/course-17-18/tree/master/site/class-4/sort)
 
 
 ### License
