@@ -166,5 +166,40 @@ My last step was to style the chart. I have used soft blue colors to indicate th
 - [Sort chart](https://github.com/cmda-fe3/course-17-18/tree/master/site/class-4/sort)
 
 
+## Contribute to the project
+
+To get this application working on your system, please follow the steps as described below.
+
+### Prerequisites
+
+```
+- Installed node version 5+ 
+```
+
+### Installing
+
+The first step is cloning the repository
+
+```
+git clone https://github.com/rvdpas/fe3-assessment-2.git
+```
+
+Then browse to the map and open your terminal (powershell, git bash, cmd), next install the dependecies
+
+```
+npm install
+```
+
+Now you can start the server by entering the following command in your terminal
+```
+npm start
+```
+
+Visit the application in the browser on 
+
+```
+localhost:3000
+```
+
 ### License
 MIT © Rob van der Pas
